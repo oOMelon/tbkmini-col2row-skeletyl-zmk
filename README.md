@@ -19,7 +19,7 @@ R6      | 7
 
 ```
 PCB Pin | MCU Pin
-C1      | 19 (only used for TBKmini, not for Skeltyl)
+C1      | 19 (only used for TBKmini, not for Skeletyl)
 C2      | 18
 C3      | 15
 C4      | 14
