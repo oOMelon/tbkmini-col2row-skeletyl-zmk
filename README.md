@@ -1,4 +1,4 @@
-# tbkmini-col2row-zmk
+# tbkmini-col2row-zmk: ZMK for TBKmini and Skeletyl
 
 ### PCB:
 - This Firmware assumes that you use this PCB https://github.com/Bastardkb/Dactyl-Manuform-PCB-Plate
