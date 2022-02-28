@@ -40,9 +40,9 @@
 
         default_layer {
             bindings = <
-	&kp deSQT      &kp F        &kp C       &kp K         &kp deQUESTION       &kp deGRAVE  &kp B        &kp O      &kp U       &kp deZ
-	&hm LGUI R     &hm LCTRL S  &hm LALT T  &hm LSHIFT H  &kp W                &kp D        &hm LSHIFT N &hm LALT A &hm LCTRL I &hm LGUI L 
-	&kp X          &kp deY      &kp G       &kp M         &kp V                &kp Q        &kp P        &kp DOT    &kp COMMA   &kp J
+	&kp deSLASH    &kp F        &kp C       &kp K         &kp deQUESTION       &kp deMINUS  &kp B        &kp O      &kp U       &kp deZ
+	&hm LGUI R     &hm LCTRL S  &hm LALT T  &hm LSHIFT H  &kp V                &kp D        &hm LSHIFT N &hm LALT A &hm LCTRL I &hm LGUI L 
+	&kp X          &kp deY      &kp G       &kp M         &kp Q                &kp W        &kp P        &kp DOT    &kp COMMA   &kp J
 	           &lt MSE ESC  &lt NAV SPACE  &lt MED TAB                       &lt FUN RET  &lt NUM E &lt SYM DEL
             >;
         };
