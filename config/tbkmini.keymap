@@ -147,12 +147,6 @@
             bindings = <&kp SLASH>;
         };
 	
-        combo_bleLayer {
-            timeout-ms = <125>;
-            key-positions = <30 31>;
-            bindings = <&mo BLE_LAYER>;
-        };
-	
     };
 
    behaviors {        
