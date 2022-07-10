@@ -183,16 +183,6 @@
 		    retro-tap;
 		    bindings = <&kp>, <&kp>;
 		};
-		
-		morph_tab: morph_tab {
-		    compatible = "zmk,behavior-mod-morph";
-		    label = "MOD_MORPH";
-		    #binding-cells = <0>;
-		    bindings = <&lt NAV_LAYER SLASH>, <&kp TAB>;
-		    mods = <(MOD_LGUI|MOD_LCTL|MOD_LALT)>;
-		};
-
-
 	};
 
 /*                KEY POSITIONS
@@ -215,7 +205,7 @@
 	&kp Q    &kp F        &kp C       &kp K         &kp MINUS       &kp APOS  &kp B        &kp O      &kp U       &kp Z
 	&hm LGUI R     &hm LCTRL S  &hm LALT T  &hm LSHIFT H  &kp D                &kp V        &hm LSHIFT N &hm LALT A &hm LCTRL I &hm LGUI L 
 	&kp X          &kp Y      &kp G       &kp M         &kp SEMI                &kp W        &kp P        &kp DOT    &kp COMMA   &kp J
-	           &morph_tab  &kp SPACE  &none                       &kp RET  &kp E &none
+	           &none  &kp SPACE  &none                       &kp RET  &kp E &none
             >;
         };
 
