@@ -161,18 +161,7 @@
 			bindings = <&kp>, <&kp>;
 		};
 
-		hm_gui: homerow_mods {
-			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
-			#binding-cells = <2>;
-			tapping_term_ms = <175>;
-			quick_tap_ms = <200>;
-			global-quick-tap;
-			flavor = "tap-preferred";
-			bindings = <&kp>, <&kp>;
-		};
-
-		gqt: global-quick-tap {
+			gqt: global-quick-tap {
 		    compatible = "zmk,behavior-hold-tap";
 		    label = "GLOBAL_QUICK_TAP";
 		    #binding-cells = <2>;
@@ -205,25 +194,25 @@
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │BACKSPACE │
-            &kp A       &kp S      &kp D      &kp F     &kp G           &kp H      &kp J      &kp K      &kp L     &kp BSPC
+        //│  F1       │  S       │  D       │  F       │  G      │   │  H       │  J       │  K       │  L       │BACKSPACE │
+            &kp F1       &kp S      &kp D      &kp F     &kp G           &kp H      &kp J      &kp K      &kp L     &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                &lt nav ESC &kp SPACE &lt extra TAB   &mo sym &mt LSHIFT ENTER &kp BSPC
+                                &lt 3 ESC &kp SPACE &lt 1 TAB   &mo 2 &mt LSHIFT ENTER &kp BSPC
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
-
+        /*
         nav_layer {
              bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
-            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
+        //│  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
+            &kp 1      &kp 2      &kp 3      &kp 4      &kp 5          &kp 6      &kp 7      &kp 8      &kp 9      &kp 0
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │BACKSPACE │
-            &kp A     HRML(S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
+            &kp A     (S,         D,         F)     &kp G          &kp H      HRMR(J,        K,           L)   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp ENTER
@@ -283,5 +272,6 @@
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
+        */
     };
 };
