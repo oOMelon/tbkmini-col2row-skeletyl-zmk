@@ -37,119 +37,6 @@
 
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        combo_lPar {
-            timeout-ms = <50>;
-            key-positions = <1 2>;
-            bindings = <&kp LPAR>;
-        };
-
-        combo_lBrace {
-            timeout-ms = <50>;
-            key-positions = <2 3>;
-            bindings = <&kp LEFT_BRACE>;
-        };
-
-        combo_arrow {
-            timeout-ms = <50>;
-            key-positions = <3 4>;
-            bindings = <&lambda_arrow>;
-        };
-
-        combo_rBrace {
-            timeout-ms = <50>;
-            key-positions = <6 7>;
-            bindings = <&kp RIGHT_BRACE>;
-        };
-
-        combo_rPar {
-            timeout-ms = <50>;
-            key-positions = <7 8>;
-            bindings = <&kp RPAR>;
-        };
-
-        combo_del {
-            timeout-ms = <50>;
-            key-positions = <8 9>;
-            bindings = <&kp DEL>;
-        };
-
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <11 12>;
-            bindings = <&kp TAB>;
-        };
-
-	combo_esc {
-            timeout-ms = <50>;
-            key-positions = <12 13>;
-            bindings = <&kp ESC>;
-        };
-
-	combo_equals {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&kp EQUAL>;
-        };
-
- 	combo_grave {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&kp GRAVE>;
-        };
-
-        combo_enter {
-            timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp RET>;
-        };
-
-        combo_ctrl_backspace {
-            timeout-ms = <50>;
-            key-positions = <16 17 18>;
-            bindings = <&kp LC(BSPC)>;
-        };
-
-        combo_backspace {
-            timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp BSPC>;
-        };
-
-	combo_caps_word {
-            timeout-ms = <50>;
-            key-positions = <13 16>;
-            bindings = <&caps_word>;
-        };
-
-        combo_cut {
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp K_CUT>;
-        };
-
-        combo_copy {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp K_COPY>;
-        };
-
-        combo_paste {
-            timeout-ms = <50>;
-            key-positions = <22 23>;
-            bindings = <&kp K_PASTE>;
-        };
-
-        combo_slash {
-            timeout-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&kp SLASH>;
-        };
-
-    };
-
    behaviors {
 		hm_shift: homerow_mods {
 			compatible = "zmk,behavior-hold-tap";
@@ -196,12 +83,12 @@
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  Ö       │
-            &kp A       &kp S     &kp D      &kp F     &kp G          &kp H     &kp J     &kp K     &kp L  &kp SEMICOLON
+   &mt LEFT_SHIFT A       &kp S     &kp D      &kp F     &kp G          &kp H     &kp J     &kp K     &kp L       &mt RIGHT_SHIFT SEMICOLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ _        │
-    &mt LEFT_CONTROL Z &mt LEFT_GUI X &kp C  &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT   &kp SLASH
+   &mt LEFT_CONTROL Z &mt LEFT_GUI X &kp C  &kp V      &kp B       &kp N      &kp M      &kp COMMA  &mt LEFT_GUI DOT   &mt RIGHT_CONTROL SLASH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                &lt NAV ESC &kp SPACE &lt EXTRA TAB   &mo SYM &mt LSHIFT ENTER &kp BSPC
+                          &lt NAV ESC &lt EXTRA SPACE &lt EXTRA TAB   &mo SYM &mt &lt SYM ENTER &kp BSPC
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -236,7 +123,7 @@
  &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp RA(NON_US_BSLH) &kp LS(RIGHT_BRACKET) &kp LS(EQUAL) &kp RA(BACKSLASH) &kp M &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH)
 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                    &trans  &trans      &trans          &trans     &trans   &trans
+                                 &kp LS(TAB) &kp TAB      &trans          &trans     &trans   &trans
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
@@ -251,7 +138,8 @@
             &kp A   &kp S &kp LS(BACKSLASH) &kp BACKSLASH &kp G       &kp H     &kp LS(MINUS) &kp MINUS &kp L   &kp SINGLE_QUOTE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
-        &out OUT_TOG &out OUT_BLE &kp C    &kp V   &kp RA(RIGHT_BRACKET)  &kp N      &kp M &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH)   //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
+   &out OUT_TOG &out OUT_BLE &kp C    &kp V   &kp RA(RIGHT_BRACKET)  &kp LS(BACKSLASH) &kp BACKSLASH &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH) 
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
                                 &trans      &trans     &trans          &trans    &trans     &trans
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
