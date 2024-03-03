@@ -88,7 +88,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ _        │
    &mt LEFT_CONTROL Z &mt LEFT_GUI X &kp C  &kp V      &kp B       &kp N      &kp M      &kp COMMA  &mt LEFT_GUI DOT   &mt RIGHT_CONTROL SLASH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                          &lt NAV ESC &lt EXTRA SPACE &lt EXTRA TAB   &mo SYM &mt &lt SYM ENTER &kp BSPC
+                          &lt NAV ESC &lt EXTRA SPACE &lt EXTRA TAB   &mo SYM     &lt SYM ENTER &kp BSPC
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
         };
