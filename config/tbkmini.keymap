@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+// Layer definitions
 #define DEFAULT 0
 #define NAV 1
 #define SYM 2
@@ -11,89 +12,102 @@
 #define ES 5
 #define MSE 6
 #define MED 7
+// -----------------
 
-&caps_word {
-   continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
+&sk {
+	// don't release mods on other mods presses
+	ignore-modifiers;
 };
 
 
 / {
-  chosen {
-    zmk,matrix_transform = &skeletyl_transform;
-  };
-
- macros {
-
-	lambda_arrow: lambda_arrow {
-            label = "lambda_arrow";
-            compatible = "zmk,behavior-macro";
-	    #binding-cells = <0>;
-            wait-ms = <10>;
-	    tap-ms = <10>;
-	    bindings
-	    = <&kp MINUS &kp GREATER_THAN>
-	    ;
-        };
-
-    };
-
-   behaviors {
-		hm_shift: homerow_mods {
+	behaviors {
+		// Enables holding the first mod-tap key
+		// by performing a tap-release-hold sequence.
+		// To use it: "&qt KEYCODE1 KEYCODE2"
+		/* qt: quick_tap {
 			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
+			label = "QUICK_TAP";
 			#binding-cells = <2>;
-			tapping_term_ms = <125>;
-			quick_tap_ms = <200>;
-			global-quick-tap;
-			flavor = "tap-preferred";
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <200>;
 			bindings = <&kp>, <&kp>;
-		};
+		}; */
+        bhm: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+	};
 
-			gqt: global-quick-tap {
-		    compatible = "zmk,behavior-hold-tap";
-		    label = "GLOBAL_QUICK_TAP";
-		    #binding-cells = <2>;
-		    flavor = "tap-preferred";
-		    tapping-term-ms = <175>;
-		    quick-tap-ms = <125>;
-		    global-quick-tap;
-		    retro-tap;
-		    bindings = <&kp>, <&kp>;
+	macros {
+		// sometimes my device thinks a modifier is being held down
+		// pressing all modifiers fixes it.
+		unstick: unstick {
+			label = "ZM_unstick";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
 		};
 	};
 
-/*                KEY POSITIONS
+	// combos {
+	// 	compatible = "zmk,combos";
+	// 	// both right thumb keys
+	// 	combo_accent {
+	// 		timeout-ms = <200>;
+	// 		key-positions = <32 33>;
+	// 		bindings = <&mo ACCENT>;
+	// 	};
+	// 	// internal-left & external-right thumb keys
+	// 	combo_sym2 {
+	// 		timeout-ms = <200>;
+	// 		key-positions = <31 33>;
+	// 		bindings = <&mo SYM2>;
+	// 	};
+	// 	// both left thumb keys
+	// 	combo_settings {
+	// 		timeout-ms = <200>;
+	// 		key-positions = <30 31>;
+	// 		bindings = <&mo SETTINGS>;
+	// 	};
+	// 	// left index & middle fingers (home-row)
+	// 	// hold control & space for Adobe workflow
+	// 	combo_ctrl_space {
+	// 		timeout-ms = <200>;
+	// 		key-positions = <12 13>;
+	// 		bindings = <&kp LC(SPACE)>;
+	// 		layers = <BASE>;
+	// 	};
+	// };
 
-  ╭────────────────────╮ ╭────────────────────╮
-  │  0   1   2   3   4 │ │  5   6   7   8   9 │
-  │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
-  │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
-  ╰──────── 30  31  32 │ │ 33  34  35 ────────╯
-              ╰────────╯ ╰────────╯
-*/
-
-
-
-   keymap {
-        compatible = "zmk,keymap";
-        default_layer {
-            bindings = <
+	keymap {
+		compatible = "zmk,keymap";
+		// Base alpha layer
+		default_layer {
+			label = "Base";
+             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  Ö       │
-   &mt LEFT_SHIFT A       &kp S     &kp D      &kp F     &kp G          &kp H     &kp J     &kp K     &kp L       &mt RIGHT_SHIFT SEMICOLON
+    &kp A     &bhm LEFT_GUI S     &bhm LEFT_CONTROL D  &bhm LEFT_SHIFT F &kp G &kp H  &bhm RIGHT_SHIFT J     &bhm RIGHT_CONTROL K &bhm RIGHT_GUI L  &kp SEMICOLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ _        │
-   &mt LEFT_CONTROL Z &mt LEFT_GUI X &kp C  &kp V      &kp B       &kp N      &kp M      &kp COMMA  &mt LEFT_GUI DOT   &mt RIGHT_CONTROL SLASH
+             &kp Z    &kp X       &kp C      &kp V      &kp B          &kp N   &kp M   &bhm LEFT_ALT COMMA  &kp DOT    &kp SLASH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                          &lt NAV ESC &lt EXTRA SPACE &lt EXTRA TAB   &mo SYM     &lt SYM ENTER &kp BSPC
+                                 &trans    &lt NAV ESC &lt EXTRA SPACE   &lt SYM ENTER &kp BSPC &kp trans
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
-        };
+		};
 
-        nav_layer {
+		nav_layer {
+			label = "Nav.";
              bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
@@ -105,44 +119,46 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
             &kp F6      &kp F7     &kp F8     &kp F9     &kp F10        &kp F11    &kp F12 &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH)
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                &trans       &trans    &trans    &kp LS(BACKSLASH) &kp BACKSLASH &kp DEL
+                                            &trans    &trans            &kp LS(BACKSLASH) &kp DEL
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
-        };
+		};
 
-        sym_layer {
-           bindings = <
+		sym_layer {
+			label = "Sym.";
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
             &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5)    &kp LS(N6) &kp LS(N7) &kp LS(N8)  &kp LS(N9) &kp LS(N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │          │
-            &kp RA(N1) &kp RA(N2) &kp RA(N3) &kp RA(N4) &kp RA(N5)    &kp RA(N6) &kp RA(N7) &kp RA(N8) &kp RA(N9) &kp RA(N0)
+            &kp RA(N1) &kp RA(N2) &kp RA(N3) &kp RA(N4) &kp RA(N5)    &kp LS(MINUS) &kp RA(N7) &kp RA(N8) &kp RA(N9) &kp RA(N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
  &kp NON_US_BSLH &kp LS(NON_US_BSLH) &kp RA(NON_US_BSLH) &kp LS(RIGHT_BRACKET) &kp LS(EQUAL) &kp RA(BACKSLASH) &kp M &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH)
 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                 &kp LS(TAB) &kp TAB      &trans          &trans     &trans   &trans
+                                             &kp LS(TAB) &kp TAB      &trans      &trans
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
-        };
+		};
 
-        extra_layer {
-             bindings = <
+		extra_layer {
+			label = "EXT.";
+            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  Å       │
             &bt BT_CLR  &bt BT_PRV &bt BT_NXT &kp R &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &kp LEFT_BRACKET
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │  Ä       │
-            &kp A   &kp S &kp LS(BACKSLASH) &kp BACKSLASH &kp G       &kp H     &kp LS(MINUS) &kp MINUS &kp L   &kp SINGLE_QUOTE
+      &bootloader   &kp S &kp LS(BACKSLASH) &kp BACKSLASH &kp G   &kp H     &kp LS(MINUS) &kp MINUS &kp L   &kp SINGLE_QUOTE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ ENTER    │
-   &out OUT_TOG &out OUT_BLE &kp C    &kp V   &kp RA(RIGHT_BRACKET)  &kp LS(BACKSLASH) &kp BACKSLASH &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH) 
+   &out OUT_TOG &out OUT_BLE &kp C    &kp V   &kp RA(RIGHT_BRACKET)  &kp LS(BACKSLASH) &kp BACKSLASH &kp LS(COMMA) &kp LS(DOT) &kp LS(SLASH)
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                &trans      &trans     &trans          &trans    &trans     &trans
+                                            &trans     &trans          &trans    &bootloader
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
-        };
-    };
+		};
+	};
 };
