@@ -101,7 +101,7 @@
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ _        │
              &kp Z    &kp X       &kp C      &kp V      &kp B          &kp N   &kp M   &bhm LEFT_ALT COMMA  &kp DOT    &kp SLASH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────╯
-                                 &trans    &lt NAV ESC &lt EXTRA SPACE   &lt SYM ENTER &kp BSPC &kp trans
+                                 &trans    &lt NAV ESC &lt EXTRA SPACE   &lt SYM ENTER &kp BSPC &trans
         //                      ╰──────────┴──────────┴──────────╯   ╰──────────┴──────────┴──────────╯
             >;
 		};
