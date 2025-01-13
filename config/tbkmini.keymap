@@ -12,20 +12,20 @@
 #define MSE 6
 #define MED 7
 
-&caps_word {
-   continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
-};
+// &caps_word {
+//    continue-list = <LSHIFT UNDERSCORE MINUS BSPC>;
+// };
 
+&sk {
+	// don't release mods on other mods presses
+	ignore-modifiers;
+};
 
 / {
   chosen {
     zmk,matrix_transform = &skeletyl_transform;
   };
 
-&sk {
-	// don't release mods on other mods presses
-	ignore-modifiers;
-};
 
 	behaviors {
 		// Enables holding the first mod-tap key
