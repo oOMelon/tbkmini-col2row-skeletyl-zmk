@@ -27,7 +27,6 @@
 	ignore-modifiers;
 };
 
-/ {
 	behaviors {
 		// Enables holding the first mod-tap key
 		// by performing a tap-release-hold sequence.
