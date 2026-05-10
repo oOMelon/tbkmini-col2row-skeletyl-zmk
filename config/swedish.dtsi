@@ -1,0 +1,130 @@
+/*
+ * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
+ * │ § │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │ 8 │ 9 │ 0 │ + │ ´ │       │
+ * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
+ * │     │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │ Å │ ¨ │     │
+ * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
+ * │      │ A │ S │ D │ F │ G │ H │ J │ K │ L │ Ö │ Ä │ ' │    │
+ * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
+ * │    │ < │ Z │ X │ C │ V │ B │ N │ M │ , │ . │ - │          │
+ * ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
+ * │    │    │    │                        │    │    │    │    │
+ * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+ */
+// Row 1
+#define seSECTION  GRAVE    // §
+#define se1        N1       // 1
+#define se2        N2       // 2
+#define se3        N3       // 3
+#define se4        N4       // 4
+#define se5        N5       // 5
+#define se6        N6       // 6
+#define se7        N7       // 7
+#define se8        N8       // 8
+#define se9        N9       // 9
+#define se0        N0       // 0
+#define sePLUS     MINUS    // +
+#define seACUTE    EQUAL    // ´
+// Row 2
+#define seQ  Q          // Q
+#define seW  W          // W
+#define seE  E          // E
+#define seR  R          // R
+#define seT  T          // T
+#define seY  Y          // Y
+#define seU  U          // U
+#define seI  I          // I
+#define seO  O          // O
+#define seP  P          // P
+#define seAA LEFT_BRACKET   // Å
+#define seDIAER  RIGHT_BRACKET // ¨
+// Row 3
+#define seA  A           // A
+#define seS  S           // S
+#define seD  D           // D
+#define seF  F           // F
+#define seG  G           // G
+#define seH  H           // H
+#define seJ  J           // J
+#define seK  K           // K
+#define seL  L           // L
+#define seOE SEMICOLON   // Ö
+#define seAE SINGLE_QUOTE // Ä
+#define seAPOS BACKSLASH // '
+// Row 4
+#define seLESS_THAN NON_US_BACKSLASH // <
+#define seZ  Z           // Z
+#define seX  X           // X
+#define seC  C           // C
+#define seV  V           // V
+#define seB  B           // B
+#define seN  N           // N
+#define seM  M           // M
+#define seCOMMA  COMMA   // ,
+#define seDOT    PERIOD  // .
+#define seMINUS  SLASH   // -
+
+/* Shifted symbols
+ * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
+ * │ ½ │ ! │ " │ # │ ¤ │ % │ & │ / │ ( │ ) │ = │ ? │ ` │       │
+ * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
+ * │     │   │   │   │   │   │   │   │   │   │   │   │ ^ │     │
+ * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
+ * │      │   │   │   │   │   │   │   │   │   │   │   │ * │    │
+ * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
+ * │    │ > │   │   │   │   │   │   │   │ ; │ : │ _ │          │
+ * ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
+ * │    │    │    │                        │    │    │    │    │
+ * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+ */
+// Row 1
+#define seHALF        LS(seSECTION) // ½
+#define seEXCLAM      LS(se1)       // !
+#define seDQT         LS(se2)       // "
+#define seHASH        LS(se3)       // #
+#define seCURRENCY    LS(se4)       // ¤
+#define sePERCENT     LS(se5)       // %
+#define seAMPERSAND   LS(se6)       // &
+#define seFSLASH      LS(se7)       // /
+#define seLPAREN      LS(se8)       // (
+#define seRPAREN      LS(se9)       // )
+#define seEQUAL       LS(se0)       // =
+#define seQUESTION    LS(sePLUS)    // ?
+#define seGRAVE       LS(seACUTE)   // ` (dead)
+// Row 2
+#define seCIRCUM      LS(seDIAER)   // ^ (dead)
+// Row 3
+#define seASTERISK    LS(seAPOS)    // *
+// Row 4
+#define seGREATER_THAN LS(seLESS_THAN) // >
+#define seSEMI        LS(seCOMMA)   // ;
+#define seCOLON       LS(seDOT)     // :
+#define seUNDERSCORE  LS(seMINUS)   // _
+
+/* AltGr symbols
+ * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐
+ * │   │   │ @ │ £ │ $ │ € │   │ { │ [ │ ] │ } │ \ │   │       │
+ * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤
+ * │     │   │   │   │   │   │   │   │   │   │   │   │ ~ │     │
+ * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
+ * │      │   │   │   │   │   │   │   │   │   │   │   │   │    │
+ * ├────┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┴────┤
+ * │    │ | │   │   │   │   │   │   │   │   │   │   │          │
+ * ├────┼───┴┬──┴─┬─┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤
+ * │    │    │    │                        │    │    │    │    │
+ * └────┴────┴────┴────────────────────────┴────┴────┴────┴────┘
+ */
+// Row 1
+#define seAT         RA(se2)     // @
+#define sePOUND      RA(se3)     // £
+#define seDOLLAR     RA(se4)     // $
+#define seEURO       RA(se5)     // €
+#define seLBRACE     RA(se7)     // {
+#define seLBRACKET   RA(se8)     // [
+#define seRBRACKET   RA(se9)     // ]
+#define seRBRACE     RA(se0)     // }
+#define seBSLH       RA(sePLUS)  // \ (backslash)
+// Row 2
+#define seTILDE      RA(seDIAER) // ~ (dead)
+// Row 4
+#define sePIPE       RA(seLESS_THAN) // |
